@@ -141,11 +141,10 @@ There are currently two strategies for structuring multiple pages in one reposit
     
 is a variable that stores the memory address of an object.
     
-    - The **memory address**, which is the *“value”* of the pointer itself.
-    - The **data type** of the variable *pointed to*
-    - **&** It is used to get the address of a variable
-    - Example
-    
+- The **memory address**, which is the value of the pointer itself.
+- The **data type** of the variable pointed to
+- **&** It is used to get the address of a variable
+- Example 
     ```cpp
     int* p = nullptr; // declare pointer and initialize it
     // so that it doesn't store a random address
@@ -154,50 +153,81 @@ is a variable that stores the memory address of an object.
     int j = *p; // dereference p to retrieve the value at its address
     ```
     
-    - **owning pointer** (or a copy of it) must be used to explicitly free the heap-allocated object when it's no longer needed.
-    - Memory allocated using **new** must be freed by using **delete**
-    - Const pointer
-    
+- **owning pointer** (or a copy of it) must be used to explicitly free the heap-allocated object when it's no longer needed.
+- Memory allocated using **new** must be freed by using **delete**
+- Const pointer
     ```cpp
     <type of pointer> *const <name of pointer>;
     int *const ptr;
     ```
     
-    - Pointer to Constant
-    
+- Pointer to Constant
     ```cpp
     const <type of pointer>* <name of pointer> 
     const int* ptr;
     ```
     
-    - Constant Pointer to a Constant
-    
+- Constant Pointer to a Constant  
     ```cpp
     const <type of pointer>* const <name of the pointer>;
     const int* const ptr;
     ```
     
-    - Pointer to Pointer
-    
+- Pointer to Pointer  
     ```cpp
     int **p; // p is a reference to another pointer
     ```
+  - Exp :
+    ```cpp
+    int *p;
+    int **p;
+    *p = &a ;
+    **q = &p;
+    *q = &b // here *q means p so p = &b
+    ```
     
-    - Pointer to a function
-    
+- Pointer to a function
     ```cpp
     functiontype (pointer to function)(datatype);
     void (*fp)(); //fp is a pointer to a function taking zero arguments and that returns void
     
-    fp = &fname;  //to initialize a function pointer we Next, you have to write the printBoard function. In it, you have to do the following:
-    Pass the appropriate parameters to it
-    Initialize the board to store the value 1 at every index in the board.
-    Display your resulting board.give it the address of the function foobar 
+    fp = &fname;  /*to initialize a function pointer we Next, you have to write the printBoard function. In it, you have to do the following:
+                    Pass the appropriate parameters to it
+                    Initialize the board to store the value 1 at every index in the board.
+                    Display your resulting board.give it the address of the function foobar */
      
        /* Now we call fp that contains the address of the function fname()*/
        fp();
     ```
-    
+- Pointer to String :
+  - *( s + i ) = s[i] = i[s]
+  - *( s ) = s[0]
+  - *( s ) + i = print the ASCII + i 
+
+## Memory Managment
+- Dynamix Memory Allocation
+    - new VS malloc :
+        -  Reallocation of memory not handled by new while malloc() can
+        - calls constructor	| does not calls constructors
+        - It is an operator	| It is a function
+        - Returns exact data type	| Returns void *
+        - on failure, Throws bad_alloc exception  | 	On failure, returns NULL
+        - size is calculated by compiler |	size is calculated manually
+        - 
+  - delete VS free()
+  - delete 
+      - It is an operator.
+      - It de-allocates the memory dynamically.
+      - It should only be used for deallocating the memory allocated either using the new operator or for a NULL pointer.
+      - This operator calls the destructor before it destroys the allocated memory.
+      - It is comparatively solwer because it invokes the destructor for the object being deleted before deallocating the memory.
+  - free()
+      - It is a library function.
+      - It destroys the memory at runtime.
+      - It should only be used for deallocating the memory allocated either using malloc(), calloc(), realloc() or for a NULL pointer.
+      - This function only frees the memory from the heap. It does not call the destructor.
+      - It is faster than delete operator.
+ 
 ## Array
     - An array is a collection of similar data types under the same name.
     - dataType arrayName[arraySize];
