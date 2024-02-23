@@ -55,14 +55,24 @@ There are currently two strategies for structuring multiple pages in one reposit
         The map is an ordered sequence of unique keys
         
 - Vector
-        
-        `vector<int> num {1, 2, 3, 4, 5};`
-        
-        Vector is a sequential container to store elements and not index based.
-        
-        - // Add element at beginning of vector
-        vecOfNumbers.insert (vecOfNumbers.begin(), value);
-        -
+  - syntax : vector<type> name {val1 , val2..};`
+  - Vector is a sequential container to store elements and not index based.
+  - vecOfNumbers.insert (vecOfNumbers.begin(), value); :  Add element at beginning of vector
+  - .size() : Returns the number of elements present.
+  - .push_back() to add an element to the “end” of a vector
+  - .pop_back() to remove an element from the “end” of a vector
+  - begin(): Returns an iterator to the first element.
+  - end()
+  - Returns an iterator to the theoretical element after the last element
+  - empty() : Returns true if the vector is empty, false otherwise.
+  - at() : Return the element at a particular position.
+  - assign() : Assign a new value to the vector elements. syntax : v.assign(pos, val);
+  - push_back() : Adds an element to the back of the vector.
+  - insert() Insert an element at the specified position. syntax : v.insert(position, val)
+  - erase() : Delete the elements at a specified position or range.
+  - clear() : Removes all elements.
+  - count(v.begin(), v.end(), elt) : count the occurence of elt in a list
+  
 ## Conditional statement
 - if
         
@@ -274,6 +284,19 @@ is a variable that stores the memory address of an object.
         };
         
 
+# Threading
+Multithreading means two or more threads running concurrently where each thread is handling a different task
+- inlude thread.h or pthread.h
+- create() : creates a new thread
+- join() : ask parent thread to wait the child thread (to ensure that a thread has been terminated)
+- detach() : child thread run independently from parent thread (cannot wait for other threads). 
+- move() : copie thread in another object. exp : t2 = move(t1) !!! it's not able to do : t2 = t1 => compilation error
+- joinable(): check whether a thread can be joined
+- exit(): terminate any thread. exp : exit(EXIT_SUCCESS)
+- get_id() : return the thread id ( put it before join() ) exp : t1.get_id() OR thread::id t1_id = t1.get_id();
+- ## Sharing data 
+    - ### Mutex 
+    - ### Future 
 
 
 # Resources
