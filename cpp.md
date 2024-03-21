@@ -286,16 +286,24 @@ is a variable that stores the memory address of an object.
 
 # Threading
 Multithreading means two or more threads running concurrently where each thread is handling a different task
-- inlude thread.h or pthread.h
-- create() : creates a new thread
-- join() : ask parent thread to wait the child thread (to ensure that a thread has been terminated)
-- detach() : child thread run independently from parent thread (cannot wait for other threads). 
-- move() : copie thread in another object. exp : t2 = move(t1) !!! it's not able to do : t2 = t1 => compilation error
-- joinable(): check whether a thread can be joined
-- exit(): terminate any thread. exp : exit(EXIT_SUCCESS)
+- inlude pthread.h
+- pthread_create(&thread, thread_attr, &fnc, params_to_fnc);() : creates a new thread
+- pthread_join(thread) : ask parent thread to wait the child thread (to ensure that a thread has been terminated)
+- pthread_detach() : child thread run independently from parent thread (cannot wait for other threads). 
+- pthread_move() : copie thread in another object. exp : t2 = move(t1) !!! it's not able to do : t2 = t1 => compilation error
+- pthread_joinable(): check whether a thread can be joined
+- pthread_exit(): terminate any thread. exp : exit(EXIT_SUCCESS)
 - get_id() : return the thread id ( put it before join() ) exp : t1.get_id() OR thread::id t1_id = t1.get_id();
 - ## Sharing data 
-    - ### Mutex 
+    - ### Mutex :
+      A Mutex is a lock that we set before using a shared resource and release after using it.
+      When the lock is set, no other thread can access the locked region of code.
+      - pthread_mutex_t lock;
+      - pthread_mutex_lock(&lock);
+      - pthread_mutex_unlock(&lock);
+      - pthread_mutex_destroy(&lock);
+
+        
     - ### Future 
 
 
